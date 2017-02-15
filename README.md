@@ -1,4 +1,4 @@
-# Stretch image
+# Fill image
 This plugin makes it possible to fill the image height and width in proportion to the size of the parent container.
 
 ## Initialize the plugin.
@@ -6,38 +6,38 @@ This plugin makes it possible to fill the image height and width in proportion t
 ###jQuery
 ```html
 <script>
-    $(selector).stretchImg()
+    $(selector).fillImage()
 </script>
 ```
 ###Without jQuery
 ```html
 <script>
-    var stretch = new StretchImg();
-    stretch.init(selector);
+    var fill = new FillImage();
+    fill.init(selector);
 </script>
 ```
 
-### Html class `StretchImage`
+### Html class `FillImage`
 ```html
-<img src="image-src" class="StretchImage" 
+<img src="image-src" class="FillImage" 
 ```
 
-### Html data attribute `data-image="stretch"`
+### Html data attribute `data-image="fill"`
 ```html
-<img src="image-src" data-image="stretch" 
+<img src="image-src" data-image="fill" 
 ```
 
-##Destroy image stretch
+##Destroy fill image
 
 ###jQuery
 ```html
 <script>
-    $(selector).stretchImg.destroy()
+    $(selector).fillImage.destroy()
 </script>
 ```
 ###Without jQuery
 ```html
 <script>
-    stretch.destroy(selector);
+    fill.destroy(selector);
 </script>
 ```

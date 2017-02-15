@@ -1,14 +1,15 @@
 /*!
- * Stretch Image v1.0.0
+ * Fill Image v1.0.0
  * Copyright 2017 Trush Dev.
  * Licensed under the MIT license
  */
 
+
 (function () {
-    this.StretchImg = function () {
+    this.FillImage = function () {
     };
 
-    StretchImg.prototype = {
+    FillImage.prototype = {
         init: function (selector) {
             var elements;
             if (typeof selector === 'string') {
@@ -40,14 +41,14 @@
                 }
                 ps.overflow = 'hidden';
                 ps.position = 'relative';
-                c.className = 'StretchImage';
+                c.className = 'FillImage';
             }
 
         },
         destroy: function (selector) {
             var elements;
             if (typeof selector === 'undefined') {
-                elements = document.querySelectorAll('.StretchImage');
+                elements = document.querySelectorAll('.FillImage');
             }
             else if (typeof selector === 'string') {
                 elements = document.querySelectorAll(selector);
@@ -62,7 +63,7 @@
     };
 
     document.addEventListener('DOMContentLoaded', function () {
-        var stretch = new StretchImg();
-        stretch.init('.StretchImage, [data-image="stretch"]')
+        var fill = new FillImage();
+        fill.init('.FillImage, [data-image="fill"]')
     })
 }());

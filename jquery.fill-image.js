@@ -4,13 +4,14 @@
  * Licensed under the MIT license
  */
 
+
 ;(function () {
     "use strict";
 
-    var StretchImg = function () {
+    var FillImage = function () {
     };
 
-    StretchImg.prototype = {
+    FillImage.prototype = {
         init: function (selector) {
             var elements;
             if (typeof selector === 'string') {
@@ -42,14 +43,14 @@
                 }
                 ps.overflow = 'hidden';
                 ps.position = 'relative';
-                c.className = 'StretchImage';
+                c.className = 'FillImage';
             }
 
         },
         destroy: function (selector) {
             var elements;
             if (typeof selector === 'undefined') {
-                elements = document.querySelectorAll('.StretchImage');
+                elements = document.querySelectorAll('.FillImage');
             }
             else if (typeof selector === 'string') {
                 elements = document.querySelectorAll(selector);
@@ -64,21 +65,21 @@
     };
 
     document.addEventListener('DOMContentLoaded', function () {
-        var stretch = new StretchImg();
-        stretch.init('.StretchImage, [data-image="stretch"]')
-    })
+        var fill = new FillImage();
+        fill.init('.FillImage, [data-image="fill"]')
+    });
 
-    jQuery.fn.stretchImg = function () {
+    jQuery.fn.fillImage = function () {
         var that = this;
-        var stretch = new StretchImg();
+        var fill = new FillImage();
 
-        jQuery.fn.stretchImg.destroy = function () {
-            stretch.destroy(that);
+        jQuery.fn.fillImage.destroy = function () {
+            fill.destroy(that);
         };
-        jQuery.fn.stretchImg.init = function () {
-            stretch.init(that);
+        jQuery.fn.fillImage.init = function () {
+            fill.init(that);
         };
-        return stretch.init(that);
+        return fill.init(that);
     };
 }(jQuery));
 
