@@ -16,6 +16,7 @@
             }
         }
     };
+
     FillImage.prototype = {
         init: function (selector) {
             var elements;
