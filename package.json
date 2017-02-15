@@ -1,6 +1,6 @@
 {
   "name": "fill-image",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This plugin makes it possible to fill the image height and width in proportion to the size of the parent container",
   "main": "fill-image.js",
   "scripts": {
