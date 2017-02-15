@@ -1,34 +1,33 @@
-/*--- jQuery Image Stretch ---*/
 ;(function () {
     "use strict";
 
-    jQuery.fn.imgStretch = function () {
+    jQuery.fn.stretchImg = function () {
         return this.each(function () {
-            var cur = jQuery(this),
-                curWidth = cur[0].naturalWidth,
-                curHeight = cur[0].naturalHeight,
-                parent = cur.parent(),
-                parentWidth = parent.width(),
-                parentHeight = parent.height(),
-                diffCur = curHeight / curWidth,
+            var c = jQuery(this),
+                cWidth = c[0].naturalWidth,
+                cHeight = c[0].naturalHeight,
+                p = c.parent(),
+                pWidth = p.width(),
+                pHeight = p.height(),
+                dc = cHeight / cWidth,
                 settings = {};
-            if (curWidth / parentWidth < curHeight / parentHeight) {
+            if (cWidth / pWidth < cHeight / pHeight) {
                 settings = {
-                    height: parentWidth * diffCur,
+                    height: pWidth * dc,
                     marginLeft: 0,
-                    marginTop: -(parentWidth * diffCur - parentHeight) / 2,
-                    width: parentWidth
+                    marginTop: -(pWidth * dc - pHeight) / 2,
+                    width: pWidth
                 };
             } else {
                 settings = {
-                    height: parentHeight,
-                    marginLeft: -(parentHeight / diffCur - parentWidth) / 2,
+                    height: pHeight,
+                    marginLeft: -(pHeight / dc - pWidth) / 2,
                     marginTop: 0,
-                    width: parentHeight / diffCur
+                    width: pHeight / dc
                 };
             }
-            cur.css(settings);
-            parent.css({overflow: 'hidden', position: 'relative'})
+            c.css(settings);
+            p.css({overflow: 'hidden', position: 'relative'})
         });
     };
 }(jQuery));
