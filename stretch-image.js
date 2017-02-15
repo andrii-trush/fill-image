@@ -1,10 +1,10 @@
 (function () {
-    "use strict";
-
     this.StretchImg = function (selector) {
+    };
+    StretchImg.prototype.build = function (selector) {
         var elements = document.querySelectorAll(selector);
-        return elements.forEach(function (current) {
-            var c = current,
+        for (var i = 0; i < elements.length; i++) {
+            var c = elements[i],
                 cWidth = c.naturalWidth,
                 cHeight = c.naturalHeight,
                 p = c.parentNode,
@@ -14,18 +14,26 @@
                 ps = p.style,
                 cs = c.style;
             if (cWidth / pWidth < cHeight / pHeight) {
-                cs.height = pWidth * dc;
+                cs.height = (pWidth * dc) + 'px';
                 cs.marginLeft = 0;
-                cs.marginTop = -(pWidth * dc - pHeight) / 2;
-                cs.width = pWidth;
+                cs.marginTop = (-(pWidth * dc - pHeight) / 2) + 'px';
+                cs.width = (pWidth) + 'px';
             } else {
-                cs.height = pHeight;
-                cs.marginLeft = -(pHeight / dc - pWidth) / 2;
+                cs.height = (pHeight) + 'px';
+                cs.marginLeft = (-(pHeight / dc - pWidth) / 2) + 'px';
                 cs.marginTop = 0;
-                cs.width = pHeight / dc
+                cs.width = (pHeight / dc) + 'px';
             }
             ps.overflow = 'hidden';
             ps.position = 'relative';
-        });
+            c.className = 'StretchImage';
+        }
     };
+    StretchImg.prototype.destroy = function () {
+        var elements = document.querySelectorAll('.StretchImage');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style = {};
+            elements[i].parentNode.style = {}
+        }
+    }
 }());

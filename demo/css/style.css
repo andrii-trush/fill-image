@@ -1,0 +1,20 @@
+.panel-original img {
+    max-height: 240px;
+}
+
+.rounded, .square, .portrait, .landscape {
+    width: 160px;
+    margin: 0 auto;
+}
+.landscape{
+    height: 120px;
+}.portrait{
+    height: 220px;
+}
+.square, .rounded {
+    height: 160px;
+}
+
+.rounded {
+    border-radius: 160px;
+}

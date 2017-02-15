@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo "Stretch image"</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"
+          media="all">
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../stretch-image.js"></script>
+    <script src="../jquery.stretch-image.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default panel-original">
+        <div class="panel-heading">
+            <div class="panel-title">Original image</div>
+        </div>
+        <div class="panel-body">
+            <img src="image/image.jpeg" alt="" class="img-responsive">
+        </div>
+    </div>
+    <div class="panel panel-default panel-standalone">
+        <div class="panel-heading">
+            <div class="panel-title">Standalone Example</div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="landscape"><img src="image/image.jpeg" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="portrait"><img src="image/image.jpeg" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="square"><img src="image/image.jpeg" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="rounded"><img src="image/image.jpeg" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default panel-jquery">
+        <div class="panel-heading">
+            <div class="panel-title">jQuery Example</div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="landscape"><img src="image/image.jpeg" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="portrait"><img src="image/image.jpeg" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="square"><img src="image/image.jpeg" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="rounded"><img src="image/image.jpeg" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var stretch = new StretchImg();
+    stretch.build('.panel-standalone img');
+    $('.panel-jquery img').stretchImg();
+</script>
+</body>
+</html>
