@@ -59,7 +59,7 @@
             }
             for (var i = 0; i < elements.length; i++) {
                 elements[i].style = {};
-                elements.classList.remove('FillImage');
+                elements[i].classList.remove('FillImage');
                 elements[i].parentNode.style = {}
             }
         }
