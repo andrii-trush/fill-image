@@ -1,3 +1,6 @@
+.navbar-brand{
+    color: #fff !important;
+}
 .panel-original img {
     max-height: 240px;
 }
@@ -17,4 +20,7 @@
 
 .rounded {
     border-radius: 160px;
+}
+.panel-body{
+    overflow: hidden;
 }

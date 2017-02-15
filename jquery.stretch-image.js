@@ -1,42 +1,85 @@
+/*!
+ * Stretch Image v1.0.0
+ * Copyright 2017 Trush Dev.
+ * Licensed under the MIT license
+ */
+
 ;(function () {
     "use strict";
 
+    var StretchImg = function () {
+    };
+
+    StretchImg.prototype = {
+        init: function (selector) {
+            var elements;
+            if (typeof selector === 'string') {
+                elements = document.querySelectorAll(selector);
+            }
+            else {
+                elements = selector;
+            }
+            for (var i = 0; i < elements.length; i++) {
+                var c = elements[i],
+                    cWidth = c.naturalWidth,
+                    cHeight = c.naturalHeight,
+                    p = c.parentNode,
+                    pWidth = p.getBoundingClientRect().width,
+                    pHeight = p.getBoundingClientRect().height,
+                    dc = cHeight / cWidth,
+                    ps = p.style,
+                    cs = c.style;
+                if (cWidth / pWidth < cHeight / pHeight) {
+                    cs.height = (pWidth * dc) + 'px';
+                    cs.marginLeft = 0;
+                    cs.marginTop = (-(pWidth * dc - pHeight) / 2) + 'px';
+                    cs.width = (pWidth) + 'px';
+                } else {
+                    cs.height = (pHeight) + 'px';
+                    cs.marginLeft = (-(pHeight / dc - pWidth) / 2) + 'px';
+                    cs.marginTop = 0;
+                    cs.width = (pHeight / dc) + 'px';
+                }
+                ps.overflow = 'hidden';
+                ps.position = 'relative';
+                c.className = 'StretchImage';
+            }
+
+        },
+        destroy: function (selector) {
+            var elements;
+            if (typeof selector === 'undefined') {
+                elements = document.querySelectorAll('.StretchImage');
+            }
+            else if (typeof selector === 'string') {
+                elements = document.querySelectorAll(selector);
+            } else {
+                elements = selector;
+            }
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style = {};
+                elements[i].parentNode.style = {}
+            }
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var stretch = new StretchImg();
+        stretch.init('.StretchImage, [data-image="stretch"]')
+    })
+
     jQuery.fn.stretchImg = function () {
         var that = this;
+        var stretch = new StretchImg();
 
         jQuery.fn.stretchImg.destroy = function () {
-            for (var i = 0; i < that.length; i++) {
-                that[i].style = {};
-                that[i].parentNode.style = {}
-            }
+            stretch.destroy(that);
         };
-        return this.each(function () {
-            var c = jQuery(this),
-                cWidth = c[0].naturalWidth,
-                cHeight = c[0].naturalHeight,
-                p = c.parent(),
-                pWidth = p.width(),
-                pHeight = p.height(),
-                dc = cHeight / cWidth,
-                settings = {};
-            if (cWidth / pWidth < cHeight / pHeight) {
-                settings = {
-                    height: pWidth * dc,
-                    marginLeft: 0,
-                    marginTop: -(pWidth * dc - pHeight) / 2,
-                    width: pWidth
-                };
-            } else {
-                settings = {
-                    height: pHeight,
-                    marginLeft: -(pHeight / dc - pWidth) / 2,
-                    marginTop: 0,
-                    width: pHeight / dc
-                };
-            }
-            c.addClass('StretchImage');
-            c.css(settings);
-            p.css({overflow: 'hidden', position: 'relative'})
-        });
+        jQuery.fn.stretchImg.init = function () {
+            stretch.init(that);
+        };
+        return stretch.init(that);
     };
 }(jQuery));
+
+

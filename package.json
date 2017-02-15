@@ -1,4 +1,24 @@
 {
-  "name": "application-name",
-  "version": "0.0.1"
+  "name": "stretch-image",
+  "version": "1.0.1",
+  "description": "This plugin makes it possible to fill the image height and width in proportion to the size of the parent container",
+  "main": "stretch-image.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andrii-trush/stretch-image"
+  },
+  "keywords": [
+    "fill",
+    "stretch",
+    "image"
+ ],
+  "author": "Andrii Trush",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrii-trush/stretch-image/issues"
+  },
+  "homepage": "https://github.com/andrii-trush/stretch-image"
 }

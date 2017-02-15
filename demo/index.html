@@ -11,6 +11,13 @@
     <script src="../jquery.stretch-image.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <span class="navbar-brand">Stretch Image Example</span>
+        </div>
+    </div>
+</nav>
 <div class="container">
     <div class="panel panel-default panel-original">
         <div class="panel-heading">
@@ -27,10 +34,10 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-6 col-sm-3">
-                    <div class="landscape"><img src="image/image.jpeg" alt=""></div>
+                    <div class="landscape"><img src="image/image.jpeg" alt="" class="StretchImage"></div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
-                    <div class="portrait"><img src="image/image.jpeg" alt=""></div>
+                    <div class="portrait"><img src="image/image.jpeg" alt="" data-image="stretch"></div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
                     <div class="square"><img src="image/image.jpeg" alt=""></div>
@@ -39,6 +46,10 @@
                     <div class="rounded"><img src="image/image.jpeg" alt=""></div>
                 </div>
             </div>
+        </div>
+        <div class="panel-footer text-right">
+            <button class="btn btn-success">Create</button>
+            <button class="btn btn-danger">Destroy</button>
         </div>
     </div>
     <div class="panel panel-default panel-jquery">
@@ -61,12 +72,30 @@
                 </div>
             </div>
         </div>
+        <div class="panel-footer text-right">
+            <button class="btn btn-success">Create</button>
+            <button class="btn btn-danger">Destroy</button>
+        </div>
     </div>
 </div>
 <script>
     var stretch = new StretchImg();
-    stretch.build('.panel-standalone img');
+    stretch.init('.panel-standalone img');
     $('.panel-jquery img').stretchImg();
+    document.querySelector('.panel-standalone .btn-danger').addEventListener('click', function () {
+        console.log('Call destroy');
+        stretch.destroy('.panel-standalone img');
+    }, false);
+    document.querySelector('.panel-standalone .btn-success').addEventListener('click', function () {
+        console.log('Call init');
+        stretch.init('.panel-standalone img');
+    }, false);
+    $('.panel-jquery .btn-danger').on('click', function () {
+        $('.panel-jquery img').stretchImg.destroy();
+    });
+    $('.panel-jquery .btn-success').on('click', function () {
+        $('.panel-jquery img').stretchImg.init();
+    })
 </script>
 </body>
 </html>
