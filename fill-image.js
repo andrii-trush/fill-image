@@ -8,14 +8,6 @@
 (function () {
     this.FillImage = function () {
     };
-    var addClass = function (node, className) {
-        if (!node.length) node = [node];
-        for (var n = 0, m = node.length; n < m; n++) {
-            if ((" " + node[n].className + " ").indexOf(" " + className + " ") >= 0) {
-                node.className += " " + className;
-            }
-        }
-    };
 
     FillImage.prototype = {
         init: function (selector) {
@@ -49,7 +41,7 @@
                 }
                 ps.overflow = 'hidden';
                 ps.position = 'relative';
-                addClass(c, 'FillImage');
+                c.classList.add('FillImage');
             }
 
         },
@@ -65,6 +57,7 @@
             }
             for (var i = 0; i < elements.length; i++) {
                 elements[i].style = {};
+                elements.classList.remove('FillImage');
                 elements[i].parentNode.style = {}
             }
         }
