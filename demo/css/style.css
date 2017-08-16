@@ -1,26 +1,53 @@
-.navbar-brand{
+.navbar-brand {
     color: #fff !important;
+}
+.panel-body{
+    padding-left: 0;
+    padding-right: 0;
 }
 .panel-original img {
     max-height: 240px;
 }
 
 .rounded, .square, .portrait, .landscape {
-    width: 160px;
-    margin: 0 auto;
+    /*width: 160px;*/
+    /*margin: 0 auto;*/
 }
-.landscape{
-    height: 120px;
-}.portrait{
-    height: 220px;
-}
-.square, .rounded {
+
+.landscape {
     height: 160px;
 }
 
-.rounded {
-    border-radius: 160px;
+.portrait {
+    height: 260px;
 }
-.panel-body{
+
+.square, .rounded {
+    height: 150px;
+}
+
+.rounded {
+    border-radius: 200px;
+}
+
+.panel-body {
     overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+    .landscape {
+        height: 120px;
+    }
+
+    .portrait {
+        height: 220px;
+    }
+
+    .square, .rounded {
+        height: 160px;
+    }
+
+    .rounded {
+        border-radius: 160px;
+    }
 }

@@ -21,6 +21,7 @@
                 elements = selector;
             }
             for (var i = 0; i < elements.length; i++) {
+
                 var c = elements[i],
                     cWidth = c.naturalWidth,
                     cHeight = c.naturalHeight,
@@ -30,6 +31,9 @@
                     dc = cHeight / cWidth,
                     ps = p.style,
                     cs = c.style;
+                ps.overflow = 'hidden';
+                ps.position = 'relative';
+                ps.maxWidth = '100%';
                 if (cWidth / pWidth < cHeight / pHeight) {
                     cs.height = (pWidth * dc) + 'px';
                     cs.marginLeft = 0;
@@ -41,11 +45,13 @@
                     cs.marginTop = 0;
                     cs.width = (pHeight / dc) + 'px';
                 }
-                ps.overflow = 'hidden';
-                ps.position = 'relative';
                 c.classList.add('FillImage');
             }
-
+        },
+        resize: function () {
+            var elements = document.querySelectorAll('.FillImage');
+            fill.destroy(elements);
+            fill.init(elements)
         },
         destroy: function (selector) {
             var elements;
@@ -62,6 +68,9 @@
                 elements[i].classList.remove('FillImage');
                 elements[i].parentNode.style = {}
             }
+            window.removeEventListener("resize", function(){
+                this.resize()
+            });
         }
     };
 
@@ -76,10 +85,21 @@
 
         jQuery.fn.fillImage.destroy = function () {
             fill.destroy(that);
+            window.removeEventListener("resize", function () {
+                fill.resize()
+            });
         };
         jQuery.fn.fillImage.init = function () {
             fill.init(that);
+            window.addEventListener("resize", function () {
+                fill.resize()
+            });
         };
+
+        window.addEventListener("resize", function () {
+            fill.resize()
+        });
+
         return fill.init(that);
     };
 }(jQuery));
